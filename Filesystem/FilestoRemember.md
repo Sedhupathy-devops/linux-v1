@@ -38,43 +38,43 @@ grep user1 /etc/passwd #displays username userid groupid homedir and shell
 ## /etc/shadow (passwords stored)
 
 ```bash
-
+tail /etc/shadow
 ```
 
 ## /etc/group (groups info)
 
 ```bash
-
+tail /etc/group
 ```
 
 ## proc/cpuinfo (to get cpu info)
 
 ```bash
-
+cat /proc/cpuinfo
 ```
 
 ## /proc/uptime (To get system uptime)
 
 ```bash
-
+cat /proc/uptime
 ```
 
 ## /proc/version (To get kernel version)
 
 ```bash
-
+cat /proc/version
 ```
 
 ## /proc/meminfo (To get memory info)
 
 ```bash
-
+cat /proc/meminfo
 ```
 
 ## /var/log (To watch logs)
 
 ```bash
-
+sudo tail -f /var/log/syslog #to get system logs
 ```
 
 ## /var/mail (To get mail infos)
@@ -89,8 +89,8 @@ grep user1 /etc/passwd #displays username userid groupid homedir and shell
 
 ```
 
-##  /usr/share/man (man pages are stored)
+## /usr/share/man (man pages are stored)
 
-## /etc/profile()
+## /etc/profile(Linux system wide environment and startup programs)
 
 ## /etc/shells(list of shells available)
