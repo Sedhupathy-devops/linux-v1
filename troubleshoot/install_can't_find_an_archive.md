@@ -3,14 +3,15 @@
 E: The package hl1440lpr needs to be reinstalled, but I can't find an archive for it.
 E: Internal error opening cache (1). Please report.
 ``
+## Solution
 
-#### To remove package
+### To remove package
 
 ```bash
 sudo dpkg --remove --force-all hl1440lpr
 ```
 
-## If that fails:
+### If that fails:
 
 ```bash
 sudo rm -i /var/lib/dpkg/info/hl1440lpr.*
