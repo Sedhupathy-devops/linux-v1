@@ -1,0 +1,50 @@
+Create custom nameservers for your domains registered with GoDaddy
+```
+add hostname with ipadress
+#use this cmd to verify that name servers changed
+dig -t ns *.co.in
+#install bind on dns server
+> for centos 
+sudo yum install bind bind-utils
+sudo systemctl enable named
+sudo systemctl start named
+sudo systemctl status named
+
+> ubuntu
+sudo apt install bind9 bind9utiuls bind9-doc
+sudo vim /etc/default/named
+OPTIONS="-u bind -4"
+dig -t a @localhost google.com
+sudo vim /etc/bind/named.conf.options
+forwarders {
+        8.8.8.8;
+        8.8.4.4;
+        };
+        
+sudo vim /etc/bind/named.conf.local
+zone "sedhu.co.in" {
+        type master;
+        file /etc/bind/db.sedhu.co.in;
+};
+
+cp /etc/bind/db.empty /etc/bind/sedhu.co.in
+
+@       IN      SOA     ns1.sedhu.co.in. root.localhost. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                          86400 )       ; Negative Cache TTL
+;
+@       IN      NS      ns1.sedhu.co.in
+ns1     IN      A       165.22.216.7
+sedhu.co.in.    IN      A       165.22.216.7
+www     IN      A       165.22.216.7
+
+apt update && apt install apache2
+sudo systemctl status apache2.service 
+ufw status
+ufw allow 'Apache Full'
+named-checkzone sedhu.co.in /etc/bind/sedhu.co.in
+
+apt install certbot python3-certbot-apache
